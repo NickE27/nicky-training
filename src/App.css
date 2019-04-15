@@ -1,3 +1,72 @@
+.flex-r {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-r-ai--cen {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-c {
+  display: flex;
+  flex-direction: column;
+}
+
+.play-button {
+  cursor: pointer;
+  color: green;
+  user-select: none;
+}
+
+.play-button:hover,
+.rate-button:hover {
+  opacity: 0.6;
+}
+
+.play-button-playing {
+  color: red;
+}
+
+.rate-button {
+  font-size: 24px;
+  margin: 16px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.rate-indicator {
+  font-size: 14px;
+  width: 88px;
+}
+
+.duration-section {
+  padding: 8px;
+}
+
+.duration-boxes {
+  position: relative;
+  align-self: center;
+  justify-content: center;
+  bottom: 4px;
+}
+
+.duration-box {
+  height: 16px;
+  background: hotpink;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.duration-box--full {
+  background: white;
+  position: absolute;
+}
+
+.duration-box--selected {
+  position: absolute;
+}
+
 .App {
   text-align: center;
 }
