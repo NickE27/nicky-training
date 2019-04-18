@@ -11,7 +11,7 @@ pipeline {
                 sh 'npm install'
                 sh 'npm run build' 
             }
-        },
+        }
         stage('Archive') {
             steps {
            // Archive the build output artifacts.
