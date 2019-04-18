@@ -17,7 +17,7 @@ pipeline {
                 // Archive the build output artifacts.
                 archiveArtifacts artifacts: 'build/*'
                 sh 'rm -r /var/jenkins_home/jobs/nicky-transcribe/latestRelease/*'
-                sh 'cp build/* /var/jenkins_home/jobs/nicky-transcribe/latestRelease'
+                sh 'cp -r build/* /var/jenkins_home/jobs/nicky-transcribe/latestRelease'
             }
         }
     }
