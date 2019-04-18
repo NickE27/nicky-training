@@ -14,10 +14,10 @@ steps:
     inputs:
       versionSpec: "10.x"
     displayName: "Install Node.js"
-  - task: ArchiveFiles@1
+  - task: ArchiveFiles@2
     inputs:
-      rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
-      includeRootFolder: false
+        rootFolderOrFile: '$(Build.BinariesDirectory)'
+        verbose: true
 
   - script: |
       npm install
