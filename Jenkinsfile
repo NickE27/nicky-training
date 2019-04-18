@@ -15,7 +15,7 @@ pipeline {
         stage('Archive') {
             steps {
            // Archive the build output artifacts.
-                archiveArtifacts artifacts: 'build/*'
+                archiveArtifacts artifacts: 'build'
             }
         }
     }
