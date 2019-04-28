@@ -40,7 +40,7 @@ const App = () => {
             playingId !== null ? "play-button-playing" : ""
           }`}
         >
-          {playingId !== null ? "Stop" : "Play"}
+          {playingId !== null ? "Pop you off" : "Pop you on"}
         </div>
 
         {sound && sound.duration() > 0 && (
