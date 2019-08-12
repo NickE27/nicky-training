@@ -15,6 +15,7 @@
 }
 
 .play-button {
+  margin: 32px;
   cursor: pointer;
   color: green;
   user-select: none;
@@ -50,21 +51,26 @@
   align-self: center;
   justify-content: center;
   bottom: 4px;
+  width: calc(80vw);
+  background: green;
 }
 
 .duration-box {
   height: 16px;
-  background: hotpink;
+  background: orange;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .duration-box--full {
   background: white;
   position: absolute;
+  width: 100%;
 }
 
 .duration-box--selected {
+  pointer-events: none;
   position: absolute;
+  transition: width 0.05s ease-in-out;
 }
 
 .App {
@@ -99,4 +105,27 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.url-input input {
+  padding: 8px;
+  font-size: 24px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  width: calc(70vw);
+}
+
+.url-input button {
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+button:hover {
+  opacity: 0.8;
 }
