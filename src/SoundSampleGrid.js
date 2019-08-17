@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 import SoundSample from "./SoundSample";
+import { dbContext } from "./FirebaseConnection";
 
 const SoundSampleGridContainer = styled.div`
   padding: 16px;
@@ -10,13 +11,33 @@ const SoundSampleGridContainer = styled.div`
   grid-gap: 16px;
 `;
 
-const SoundSampleGrid = ({ onPlaySample }) => (
-  <SoundSampleGridContainer>
-    <SoundSample startPoint={0} duration={2000} onPlay={onPlaySample} />
-    <SoundSample startPoint={2000} duration={10000} onPlay={onPlaySample} />
-    <SoundSample startPoint={12000} duration={5000} onPlay={onPlaySample} />
-  </SoundSampleGridContainer>
-);
+const SoundSampleGrid = ({ onPlaySample }) => {
+  const { db } = useContext(dbContext);
+  const [sections, setSections] = useState(null);
+  useEffect(() => {
+    db.collection("sections")
+      .get()
+      .then(querySnapshot => {
+        const data = querySnapshot.docs.map(doc => doc.data());
+        console.log(data);
+        setSections(data);
+      });
+  }, []);
+  console.log("sections DATA", sections);
+  return (
+    <SoundSampleGridContainer>
+      {sections &&
+        sections.map((section, index) => (
+          <SoundSample
+            key={index}
+            startPoint={section.start}
+            duration={section.duration}
+            onPlay={onPlaySample}
+          />
+        ))}
+    </SoundSampleGridContainer>
+  );
+};
 
 SoundSampleGrid.propTypes = {};
 

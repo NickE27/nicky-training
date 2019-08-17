@@ -20,7 +20,7 @@ const SoundSampleTitle = styled.div`
   box-sizing: border-box;
   height: 32px;
   width: 100%;
-  font-weight: 100;
+  font-weight: 300;
   position: absolute;
   bottom: 0px;
   color: white;

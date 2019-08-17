@@ -3,7 +3,13 @@ import "./App.css";
 import { Howl } from "howler";
 import SoundSampleGrid from "./SoundSampleGrid";
 import PlaybackBar from "./PlaybackBar";
+import { dbContext, useFirestore } from "./FirebaseConnection";
 //import mp3_file from "./4927.mp3";
+
+const UserProfile = () => {
+  const user = null;
+  return <div>Hello, {user && user.displayName}</div>;
+};
 
 const App = () => {
   const [sound, setSound] = useState(null);
@@ -51,7 +57,10 @@ const App = () => {
       sound._sprite.main = [0, duration + amount];
     }
   };
-
+  const { db } = useFirestore();
+  if (!db) {
+    return <div>Loading</div>;
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -88,7 +97,9 @@ const App = () => {
         >
           {playingId !== null ? "Pop you off!" : "Pop you on!"}
         </div>
-        <SoundSampleGrid onPlaySample={onPlaySample} />
+        <dbContext.Provider value={{ db }}>
+          <SoundSampleGrid onPlaySample={onPlaySample} />
+        </dbContext.Provider>
 
         {sound && sound.duration() > 0 && (
           <>
