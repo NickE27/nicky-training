@@ -37,7 +37,6 @@ const PlayIcon = styled.i`
   height: 100%;
   font-size: 100px !important;
   cursor: pointer;
-  background: rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease-in-out;
   &:hover {
     background: transparent;

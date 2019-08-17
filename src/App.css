@@ -16,8 +16,9 @@
 
 .play-button {
   margin: 32px;
+  font-size: 48px !important;
   cursor: pointer;
-  color: green;
+  color: orange;
   user-select: none;
 }
 

@@ -17,28 +17,29 @@ const App = () => {
   const [soundRate, setSoundRate] = useState(1);
   const [duration, setDuration] = useState(500);
   const [url, setUrl] = useState(
-    "https://www.google.com/logos/fnbx/animal_sounds/frog.mp3"
+    // "https://www.google.com/logos/fnbx/animal_sounds/frog.mp3"
+    "https://www.free-stock-music.com/music/mixaund-stay-positive.mp3"
   );
   const [inputString, setInputString] = useState("");
 
   const onPlaySample = (start, duration) => {
     console.log("PLAYING SAMPLE", start, duration);
   };
-
+  const fullDuration =
+    sound && sound.duration() ? sound.duration() * 1000 : 2600;
   useEffect(() => {
     const newSound = new Howl({
       src: [url],
       html5: true,
       loop: true,
       sprite: {
-        main: [0, duration]
+        main: [0, 5000]
       },
       rate: 1
     });
     setSound(newSound);
   }, [url]);
-  const fullDuration =
-    sound && sound.duration() ? sound.duration() * 1000 : 2600;
+
   const percentage = (duration / fullDuration) * 100;
   const onePercent = fullDuration / 100;
 
@@ -91,12 +92,19 @@ const App = () => {
               setPlaying(playing);
             }
           }}
-          className={`play-button ${
+          title={playingId !== null ? "Pop you off!" : "Pop you on!"}
+          className={`play-button material-icons ${
             playingId !== null ? "play-button-playing" : ""
           }`}
         >
-          {playingId !== null ? "Pop you off!" : "Pop you on!"}
+          {playingId === null ? "play_arrow" : "stop"}
         </div>
+        <PlaybackBar
+          onChangeDurationByPercentage={onChangeDurationByPercentage}
+          onChangeSoundRateByAmount={onChangeSoundRateByAmount}
+          percentage={percentage}
+          soundRate={soundRate}
+        />
         <dbContext.Provider value={{ db }}>
           <SoundSampleGrid onPlaySample={onPlaySample} />
         </dbContext.Provider>
@@ -124,12 +132,6 @@ const App = () => {
                 +
               </div>
             </div>
-            <PlaybackBar
-              onChangeDurationByPercentage={onChangeDurationByPercentage}
-              onChangeSoundRateByAmount={onChangeSoundRateByAmount}
-              percentage={percentage}
-              soundRate={soundRate}
-            />
           </>
         )}
       </header>
