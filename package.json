@@ -9,6 +9,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "2.1.8",
+    "react-select": "^3.0.4",
     "styled-components": "^4.3.2",
     "w3m": "^1.0.20"
   },

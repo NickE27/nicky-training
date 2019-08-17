@@ -34,13 +34,15 @@
 .rate-button {
   font-size: 24px;
   margin: 16px;
+  color: white;
   cursor: pointer;
   user-select: none;
 }
 
 .rate-indicator {
   font-size: 14px;
-  width: 88px;
+  width: fit-content;
+  color: white;
 }
 
 .duration-section {
@@ -74,38 +76,10 @@
   transition: width 0.05s ease-in-out;
 }
 
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.url-input {
+  position: absolute;
+  top: 8px;
+  right: 8px;
 }
 
 .url-input input {
@@ -114,7 +88,7 @@
   border: none;
   outline: none;
   border-radius: 10px;
-  width: calc(70vw);
+  width: calc(30vw);
 }
 
 .url-input button {

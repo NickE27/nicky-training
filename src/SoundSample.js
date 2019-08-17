@@ -32,15 +32,14 @@ const PlayIcon = styled.i`
   position: absolute;
   padding-top: 8px;
   width: 100%;
+  display: flex !important;
+  justify-content: center;
   left: 0;
   top: 0;
   height: 100%;
   font-size: 100px !important;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  &:hover {
-    background: transparent;
-  }
 `;
 
 const SoundSample = ({ startPoint, duration, onPlay }) => (

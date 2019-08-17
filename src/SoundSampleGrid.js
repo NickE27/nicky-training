@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import SoundSample from "./SoundSample";
 import { dbContext } from "./FirebaseConnection";
@@ -11,19 +12,16 @@ const SoundSampleGridContainer = styled.div`
   grid-gap: 16px;
 `;
 
-const SoundSampleGrid = ({ onPlaySample }) => {
+const SoundSampleGrid = ({ onPlaySample, path }) => {
   const { db } = useContext(dbContext);
   const [sections, setSections] = useState(null);
   useEffect(() => {
-    db.collection("sections")
+    db.collection(path)
       .get()
       .then(querySnapshot => {
-        const data = querySnapshot.docs.map(doc => doc.data());
-        console.log(data);
-        setSections(data);
+        setSections(querySnapshot.docs.map(doc => doc.data()));
       });
   }, []);
-  console.log("sections DATA", sections);
   return (
     <SoundSampleGridContainer>
       {sections &&
@@ -31,7 +29,7 @@ const SoundSampleGrid = ({ onPlaySample }) => {
           <SoundSample
             key={index}
             startPoint={section.start}
-            duration={section.duration}
+            duration={section.end - section.start}
             onPlay={onPlaySample}
           />
         ))}
@@ -39,6 +37,6 @@ const SoundSampleGrid = ({ onPlaySample }) => {
   );
 };
 
-SoundSampleGrid.propTypes = {};
+SoundSampleGrid.propTypes = { path: PropTypes.string.isRequired };
 
 export default SoundSampleGrid;
