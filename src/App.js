@@ -3,6 +3,7 @@ import Tune from "./Tune";
 import { dbContext, useFirestore } from "./FirebaseConnection";
 import TuneSelect from "./TuneSelect";
 import styled from "styled-components";
+// import NewTuneButton from "./NewTuneButton";
 
 const AppPage = styled.div`
   background-color: #282c34;
@@ -15,16 +16,29 @@ const AppPage = styled.div`
   align-items: center;
 `;
 
+const AppHeader = styled.header`
+  padding: 8px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+`;
+
 const App = () => {
-  const { db } = useFirestore();
+  const firestore = useFirestore();
   const [tune, setTune] = useState();
-  if (!db) {
+  if (!firestore.db) {
     return "Loading...";
   }
   return (
-    <dbContext.Provider value={{ db }}>
+    <dbContext.Provider value={firestore}>
       <AppPage>
-        <TuneSelect tune={tune} setTune={setTune} />
+        <AppHeader>
+          <TuneSelect tune={tune} setTune={setTune} />
+          {/* <NewTuneButton onSubmitNewTune={() => {}} /> */}
+        </AppHeader>
         {tune && <Tune path={tune.path} />}
       </AppPage>
     </dbContext.Provider>

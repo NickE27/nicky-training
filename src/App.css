@@ -1,3 +1,7 @@
+.paper {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
 .flex-r {
   display: flex;
   flex-direction: row;
@@ -15,20 +19,32 @@
 }
 
 .play-button {
-  margin: 32px;
   font-size: 48px !important;
   cursor: pointer;
-  color: orange;
+  color: green;
   user-select: none;
 }
 
 .play-button:hover,
-.rate-button:hover {
+.rate-button:hover,
+.restart-button:hover {
   opacity: 0.6;
 }
 
 .play-button-playing {
   color: red;
+}
+
+.restart-button {
+  font-size: 48px !important;
+  cursor: pointer;
+  color: purple;
+  user-select: none;
+}
+
+.restart-button--disabled {
+  color: lightgray;
+  pointer-events: none;
 }
 
 .rate-button {
@@ -68,12 +84,19 @@
   background: white;
   position: absolute;
   width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
-.duration-box--selected {
+.duration-box--selected,
+.duration-box--empty {
+  position: relative;
   pointer-events: none;
-  position: absolute;
   transition: width 0.05s ease-in-out;
+}
+
+.duration-box--empty {
+  background: white;
 }
 
 .url-input {
@@ -102,5 +125,39 @@
 }
 
 button:hover {
+  opacity: 0.8;
+}
+
+.seeker-bar {
+  height: 32px;
+  border-right: 2px solid hotpink;
+  position: absolute;
+  left: 0;
+  pointer-events: none;
+  top: -8px;
+  z-index: 999;
+}
+
+.end-selector,
+.start-selector {
+  pointer-events: all;
+  cursor: pointer !important;
+  width: 4px;
+  height: calc(100%);
+  background: orangered;
+  border: 4px transparent;
+  position: absolute;
+}
+
+.start-selector {
+  left: -4px;
+}
+
+.end-selector {
+  right: -4px;
+}
+
+.start-selector:hover,
+.end-selector:hover {
   opacity: 0.8;
 }

@@ -5,11 +5,9 @@ import Select from "react-select";
 import { dbContext } from "./FirebaseConnection";
 
 const TuneSelectBox = styled.div`
-  margin-left: 32px;
-  margin-top: 8px;
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: fit-content;
 `;
 
 const customStyles = {
@@ -48,8 +46,8 @@ const TuneSelect = ({ tune, setTune }) => {
           path: doc.ref.path
         }));
         setTuneOptions(options);
-        if (options.length > 0) {
-          setTune(options[0]);
+        if (options.length > 1) {
+          setTune(options[1]);
         }
       });
   }, []);

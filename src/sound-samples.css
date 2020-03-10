@@ -1,0 +1,32 @@
+.sound-sample-box--edit-mode .phrase-button {
+  background: white !important;
+  border: 1px solid red !important;
+  color: red;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.sound-sample-box--edit-mode .phrase-button:hover {
+  background: red !important;
+  color: white;
+}
+
+.sound-sample-box:hover .samples-edit-button {
+  display: unset !important;
+  opacity: 1 !important;
+}
+
+.samples-edit-button {
+  transition: all 0.3s ease-out !important;
+  display: none !important;
+  opacity: 0 !important;
+  cursor: pointer;
+  position: absolute;
+  bottom: 32px;
+  right: 0px;
+  color: purple;
+}
+
+.sound-sample-box--edit-mode .samples-edit-button {
+  color: green;
+}
